@@ -1,26 +1,19 @@
 // Function returns all unique characters that exist in a string.
 
-// - create an empty object
-// - look at each letter in a given string (omit spaces)
-// - evaluate whether that letter is unique
-// - if the current letter is equal to an established key, increment the established key's value by 1
-// - return a count of how many times each letter shows up
-// - add everything to the empty object and print that info
-
-function countCharacters(string) {
-  var characters = {}
+function countLetters(string) {
+  var letters = {}
 
   for (var i = 0; i < string.length; i++) {
 
-    if (string[i] in characters) {
-      characters[string[i]] = characters[string[i]] + 1;
+    if (string[i] in letters) {
+      letters[string[i]] = letters[string[i]] + 1;
     } else {
         if (string[i] != " ") {
-          characters[string[i]] = 1;
+          letters[string[i]] = 1;
         }
       }
   }
-  return characters;
+  return letters;
 }
 
-console.log(countCharacters("test string"));
+console.log(countLetters("lighthouse in the house"));
