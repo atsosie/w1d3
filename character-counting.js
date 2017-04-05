@@ -11,9 +11,16 @@ function countCharacters(string) {
   var characters = {}
 
   for (var i = 0; i < string.length; i++) {
-      characters[string[i]] = 1;
+
+    if (string[i] in characters) {
+      characters[string[i]] = characters[string[i]] + 1;
+    } else {
+        if (string[i] != " ") {
+          characters[string[i]] = 1;
+        }
+      }
   }
   return characters;
 }
 
-console.log(countCharacters("test"));
+console.log(countCharacters("test string"));
