@@ -40,20 +40,16 @@ function calculateSales(sales) {
 }
 
 
-var totalSalesBombardier = calculateSales(companySalesData[1].sales);
+function calculateSalesTax(salesData, taxRates) {
+  var companyData = {};
+  for (var i = 0; i < salesData.length; i++) {
+    companyData[salesData[i].name] = {}
+  }
+  return companyData;
+}
 
-console.log("Bombardier total sales =", totalSalesBombardier);
-
-var totalTaxesBombardier = calculateTax(totalSalesBombardier, 0.05);
-
-console.log("Bombardier total taxes =", totalTaxesBombardier);
-
-
-//function calculateSalesTax(salesData, taxRates) {
-  // Implement your code here
-//}
-
-//var results = calculateSalesTax(companySalesData, salesTaxRates);
+var results = calculateSalesTax(companySalesData, salesTaxRates);
+console.log(results);
 
 /* Expected Results:
 {
