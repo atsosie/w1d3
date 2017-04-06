@@ -26,11 +26,6 @@ var companySalesData = [
 ];
 
 
-function calculateTax(sales, taxRate) {
-  return sales * taxRate;
-}
-
-
 function calculateSales(sales) {
   var total = 0;
   for (var i = 0; i < sales.length; i++) {
@@ -40,12 +35,32 @@ function calculateSales(sales) {
 }
 
 
+function calculateTax(sales, taxRate) {
+  return sales * taxRate;
+}
+
+
 function calculateSalesTax(salesData, taxRates) {
   var companyData = {};
+
   for (var i = 0; i < salesData.length; i++) {
-    companyData[salesData[i].name] = {}
+
+    var key = salesData[i].name
+    var totalSales = calculateSales(salesData[i].sales);
+    var totalTaxes = calculateTax(totalSales, salesTaxRates[salesData[i].province]);
+
+    if (key in companyData) {
+      companyData[key].totalSales += totalSales;
+      companyData[key].totalTaxes += totalTaxes;
+    } else {
+      companyData[key] = {}
+      companyData[key].totalSales = totalSales;
+      companyData[key].totalTaxes = totalTaxes;
+    }
+
   }
   return companyData;
+
 }
 
 var results = calculateSalesTax(companySalesData, salesTaxRates);
